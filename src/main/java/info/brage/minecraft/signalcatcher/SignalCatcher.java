@@ -4,6 +4,7 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerAboutToStartEvent;
+import net.minecraftforge.fml.relauncher.Side;
 import sun.misc.Signal;
 import sun.misc.SignalHandler;
 
@@ -16,6 +17,8 @@ public class SignalCatcher {
 
     @Mod.EventHandler
     public void init(FMLInitializationEvent event) {
+        // Don't run client-side, it makes kill not kill the whole client.
+        if (event.getSide() != Side.SERVER) return;
         sig("TERM");
         sig("INT");
         sig("HUP");
