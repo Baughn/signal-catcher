@@ -3,6 +3,7 @@ package info.brage.minecraft.signalcatcher;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.relauncher.Side;
 import net.minecraft.server.MinecraftServer;
 import sun.misc.Signal;
 import sun.misc.SignalHandler;
@@ -14,6 +15,8 @@ public class SignalCatcher {
 
     @EventHandler
     public void init(FMLInitializationEvent event) {
+        // Don't run client-side, it makes kill not kill the whole client.
+        if (event.getSide() != Side.SERVER) return;
         sig("TERM");
         sig("INT");
         sig("HUP");
