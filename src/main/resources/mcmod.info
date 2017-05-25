@@ -1,0 +1,16 @@
+[
+{
+  "modid": "Signal-Catcher",
+  "name": "Signal-Catcher",
+  "description": "Catches signals and exits cleanly.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Baughn"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
