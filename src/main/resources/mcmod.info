@@ -1,6 +1,6 @@
 [
 {
-  "modid": "Signal-Catcher",
+  "modid": "signal-catcher",
   "name": "Signal-Catcher",
   "description": "Catches signals and exits cleanly.",
   "version": "${version}",

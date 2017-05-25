@@ -1,29 +1,37 @@
 package info.brage.minecraft.signalcatcher;
 
-import cpw.mods.fml.common.Mod;
-import cpw.mods.fml.common.Mod.EventHandler;
-import cpw.mods.fml.common.event.FMLInitializationEvent;
 import net.minecraft.server.MinecraftServer;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLServerAboutToStartEvent;
 import sun.misc.Signal;
 import sun.misc.SignalHandler;
 
-@Mod(modid = SignalCatcher.MODID, version = SignalCatcher.VERSION, acceptedMinecraftVersions = "[1.7.10,)", acceptableRemoteVersions = "*")
+@Mod(modid = SignalCatcher.MODID, version = SignalCatcher.VERSION, acceptedMinecraftVersions = "[1.10.2,)", acceptableRemoteVersions = "*")
 public class SignalCatcher {
     static final String MODID = "SignalCatcher";
     static final String VERSION = "1.0";
 
-    @EventHandler
+    private MinecraftServer server;
+
+    @Mod.EventHandler
     public void init(FMLInitializationEvent event) {
         sig("TERM");
         sig("INT");
         sig("HUP");
     }
 
-    private static final SignalHandler handler = new SignalHandler() {
+    @Mod.EventHandler
+    public void serverSet(FMLServerAboutToStartEvent event) {
+        server = event.getServer();
+    }
+
+    private final SignalHandler handler = new SignalHandler() {
         @Override
         public void handle(Signal signal) {
             System.out.println("Terminating from signal");
-            MinecraftServer.getServer().initiateShutdown();
+            if (server != null)
+                server.initiateShutdown();
         }
     };
 
