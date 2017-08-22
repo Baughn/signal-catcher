@@ -8,7 +8,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import sun.misc.Signal;
 import sun.misc.SignalHandler;
 
-@Mod(modid = SignalCatcher.MODID, version = SignalCatcher.VERSION, acceptedMinecraftVersions = "[1.11.2,)", acceptableRemoteVersions = "*")
+@Mod(modid = SignalCatcher.MODID, version = SignalCatcher.VERSION, acceptedMinecraftVersions = "[1.12.0,)", acceptableRemoteVersions = "*")
 public class SignalCatcher {
     static final String MODID = "signal-catcher";
     static final String VERSION = "1.0";

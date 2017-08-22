@@ -7,7 +7,7 @@ buildscript {
         }
     }
     dependencies {
-        classpath 'net.minecraftforge.gradle:ForgeGradle:2.2-SNAPSHOT'
+        classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
     }
 }
 
@@ -18,14 +18,14 @@ group = "info.brage.minecraft.signalcatcher" // http://maven.apache.org/guides/m
 archivesBaseName = "signalcatcher"
 
 compileJava {
-    sourceCompatibility = targetCompatibility = "1.7"
+    sourceCompatibility = targetCompatibility = "1.8"
 }
 
 minecraft {
-    version = "1.11.2-13.20.0.2304"
+    version = "1.12.1-14.22.0.2460"
     runDir = "run"
 
-    mappings = "snapshot_20161220"
+    mappings = "snapshot_20170624"
 }
 
 dependencies {
@@ -45,7 +45,7 @@ processResources
         expand 'version':project.version, 'mcversion':project.minecraft.version
     }
         
-    // copy everything else, thats not the mcmod.info
+    // copy everything else, except mcmod.info
     from(sourceSets.main.resources.srcDirs) {
         exclude 'mcmod.info'
     }
